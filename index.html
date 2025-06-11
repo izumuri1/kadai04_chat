@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夫婦のきずな</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- screen1：初期画面 -->
+<div id="screen1" class="screen">
+    <!-- ヘッダー -->
+    <header>
+        <div>
+            <h1>夫婦のきずな</h1>
+        </div>
+    </header>
+    <!-- タスク管理画面へ -->
+    <main>
+        <div>
+            <button id="btnScreen2">
+                タスク管理
+            </button>
+        </div>
+    </main>
+    <!-- チャット登録 -->
+    <main>
+        <div class="chatterSelect">
+            <input id="chatter" type="text" placeholder="名前を入力してください">
+        </div>
+        <div>
+            <textarea name="" id="chatText" placeholder="チャット内容を入力してください"></textarea>
+        </div>
+        <div>
+            <button id="chatRegister">登録</button>
+        </div>
+    </main>
+    <!-- チャット履歴 -->
+    <main>
+        <div id="chatArea"></div>
+    </main>
+    <footer>&copy; 2025 izumuri</footer>
+</div>
+
+<!-- screen2：タスク管理画面 -->
+<div id="screen2" class="screen hidden">
+    <main>
+        <div>
+            <h1>タスク管理</h1>
+        </div>
+        <div>
+            <button id="btnScreen1"">はじめに戻る</button>
+        </div>
+    </main>
+    <!-- タスク新規登録 -->
+    <main>
+        <!-- 誰のタスクか登録 -->
+        <div>
+            <input id="taskPlayer" type="text" placeholder="誰のタスクか名前を入力してください">
+        </div>
+        <!-- 期限登録 -->
+        <div id="taskCalender">
+            <label for="taskDate">タスクの期限を設定してください</label>
+            <div>
+                <input type="date" id="taskDate">
+            </div>
+        </div>
+        <!-- タスク内容を登録 -->
+        <div>
+            <textarea name="" id="taskMatter" placeholder="タスク内容を入力してください"></textarea>
+        </div>
+        <div>
+            <button id="taskRegister">登録</button>
+        </div>
+    </main>
+    <!-- タスク履歴表示 -->
+    <main>
+        <div class="taskArea"></div>
+    </main>
+    <footer>&copy; 2025 izumuri</footer>
+</div>
+
+
+<script type="module" src="js.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</body>
+
+</html>

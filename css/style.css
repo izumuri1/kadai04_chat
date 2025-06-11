@@ -1,0 +1,161 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+}
+
+h1 {
+  text-align: center;
+  margin: 30px 0;
+  font-size: 20px;
+}
+
+footer {
+  text-align: center;
+  margin: 50px 0;
+  font-size: 15px;
+}
+
+input {
+  width: 500px;
+  padding: 5px;
+  display: block;
+  margin: 0 auto 10px;
+  border-radius: 4px;
+  box-shadow: 5px 2px 2px rgba(128, 128, 128, 0.368);
+}
+
+label {
+  width: 500px;
+  margin: 0 auto 10px;
+}
+
+textarea {
+  width: 500px;
+  height: 100px;
+  padding: 5px;
+  margin: 0 auto 10px;
+  display: block;
+  resize: none;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 5px 2px 2px rgba(128, 128, 128, 0.368);
+}
+
+#chatArea {
+  background-color: white;
+  box-shadow: 5px 2px 2px rgba(128, 128, 128, 0.368);
+}
+
+.chatRireki {
+    /* display: inline-block; テキストの長さに合わせて背景を適用！ */
+    border-radius: inherit;
+    padding: 5px;
+    margin: 0 auto 20px;
+    box-shadow: 5px 2px 2px rgba(128, 128, 128, 0.368);
+}
+.chatRireki:nth-child(odd) {
+    background-color: greenyellow; /* 奇数番目の背景色 */
+    text-align: left;
+}
+.chatRireki:nth-child(even) {
+    background-color: pink;; /* 偶数番目の背景色 */
+    text-align: right;
+}
+
+.taskSet {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* ラベルと入力欄の間に均等なスペースを設定 */
+}
+
+.taskRireki input {
+  width: 400px;
+  padding: 5px;
+  display: block;
+  margin: 0 auto 5px;
+  border-radius: 4px;
+}
+
+.taskRireki label {
+  width: auto; /* 自動調整 */
+  flex-grow: 0; /* ラベルが広がらないようにする */
+  margin: 0 10px 5px 0; /* 左側の余白をなくして間隔を統一 */
+}
+
+.taskRireki textarea {
+  width: 400px;
+  height: 50px;
+  padding: 5px;
+  margin: 0 auto 5px;
+  display: block;
+  resize: none;
+  border-radius: 4px;
+}
+
+button {
+  width: 200px;
+  height: 30px;
+  margin: 0 auto 50px;
+  display: block;
+  font-size: 16px;
+  background-color: rgba(183, 182, 182, 0.527);
+  border-radius: 4px;
+  box-shadow: 5px 2px 2px rgba(128, 128, 128, 0.368);
+}
+
+button:hover {
+  background-color: lightpink;
+  color: white;
+}
+
+.btnTaskSet {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* ボタンの間に均等なスペースを設定 */
+}
+
+.btnTaskSet button {
+  width: 100px;
+  height: 30px;
+  margin: 0 auto 40px;
+  display: block;
+  font-size: 16px;
+  background-color: rgba(183, 182, 182, 0.527);
+  border-radius: 4px;
+}
+
+.hidden {
+    display: none;
+}
+
+#taskCalender {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#chatArea {
+  width: 500px;
+  display: block;
+  height: 500px;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: 5px 2px 2px rgba(128, 128, 128, 0.368);
+}
+
+.taskArea {
+  width: 500px;
+  display: block;
+  height: auto;
+  overflow: hidden;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  border-radius: 8px;
+  padding: 5px;
+  box-shadow: 5px 2px 2px rgba(128, 128, 128, 0.368);
+}
