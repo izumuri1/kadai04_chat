@@ -5,7 +5,7 @@
 - 夫婦間のコミュニケーション、タスク管理ツール
 
 ## ③アプリのデプロイURL
-
+https://izumuri1.github.io/kadai04_chat/
 
 ## ④アプリのログイン用IDまたはPassword（ある場合）
 - ID: なし
