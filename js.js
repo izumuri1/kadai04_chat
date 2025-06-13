@@ -31,7 +31,7 @@ $("#btnScreen2").on("click",function(){
     $("#screen1").addClass("hidden");
     $("#screen2").removeClass("hidden");
 
-    // 表示を更新
+    // 表示を更新（関数は後述）
     renderTasks();
 });
 
