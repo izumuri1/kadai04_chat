@@ -57,7 +57,7 @@ $("#chatRegister").on("click",function(){
 
 // ②chatAreaにチャット履歴を表示
 //onChildAddedは、Firebaseの memo/chat に新しいデータが追加されたときに実行されるリスナー
-//chatRef は memo/chat を指すので、新しいメッセージが入ると、この関数が発火
+//chatRef は memo/chat を指すので、新しいメッセージが入ると、この関数が起動
 onChildAdded(chatRef, function(data){     //dataはここでだけ使う仮引数（ローカル変数）
     const chat = data.val();
     //data.key を取得することで、メッセージのユニークな識別ID ("-N123abcxyz") を取得
@@ -150,14 +150,10 @@ function renderTasks() {
 // 6⃣既往タスクの完了登録（①FB送信、②taskAreaの対象タスクをグレーアウト）
 // ★後日対応
 
-// 7⃣既往タスクを更新（①FB送信、②taskAreaに既往タスクを再読み込み）➡散々Copilotに聞いたが非同期処理でうまくいかず
+// 7⃣既往タスクを更新（①FB送信、②taskAreaに既往タスクを再読み込み）
 $(document).on("click", ".taskRenew", function () {
     const key = $(this).closest(".taskRireki").data("key");
     const taskToRenewRef = ref(db, `memo/task/${key}`);
-
-    // 更新前の `tasks` をコピー（この時点ではまだ変更されていない！）
-    const tasksBeforeUpdate = [...tasks];  
-    console.log("🔥 正しく保存した更新前の tasks:", tasksBeforeUpdate);
 
     const updatedTask = {
         taskPlayer: $(this).closest(".taskRireki").find("input[type='text']").val(),
@@ -166,18 +162,27 @@ $(document).on("click", ".taskRenew", function () {
     };
 
     update(taskToRenewRef, updatedTask).then(() => {
-        console.log(`✅ 更新成功: ${key}`);
-
-        // 更新処理
-        tasks = tasks.map(task => task.key === key ? { ...task, ...updatedTask } : task);
-        console.log("✅ 更新後の tasks:", tasks);
-
-        // 更新処理
-        renderTasks();
-
+        console.log(`✅ Firebase側の更新成功: ${key}`);
+        // 描画は onChildChanged に任せる
     }).catch(error => {
         console.error("❌ 更新エラー:", error);
     });
+});
+
+onChildChanged(taskRef, function (data) {
+    const updated = data.val();
+    const key = data.key;
+
+    // 該当のタスクを更新
+    tasks = tasks.map(task =>
+        task.key === key
+            ? { key: key, taskPlayer: updated.taskPlayer, taskDate: updated.taskDate, taskMatter: updated.taskMatter }
+            : task
+    );
+
+    // 並び替えて描画
+    tasks.sort((a, b) => new Date(a.taskDate) - new Date(b.taskDate));
+    renderTasks();
 });
 
 // 8⃣既往タスクの削除（①FB送信、②taskAreaに既往タスクを再読み込み）
